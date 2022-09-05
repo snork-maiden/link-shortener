@@ -1,0 +1,29 @@
+@import "../../styles.scss";
+
+.app-autorization {
+    background-color: var(--block-bg);
+    width: 500px;
+    max-width: 95vw;
+    padding: 2em;
+    border-radius: 10px;
+}
+
+.tabs {
+    display: flex;
+    gap: 1em;
+}
+
+.tab {
+    text-transform: uppercase;
+    &:hover {
+        transform: scale(1.03);
+    }
+}
+
+.tabs__input {
+    display: none;
+}
+
+.tabs__input:checked + .tab {
+    color: #C14953;
+}
