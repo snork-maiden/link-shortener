@@ -1,28 +1,2 @@
-@import "../../styles.scss";
 
-.app-log-in {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.5em 1em;
-    align-items: center;
-}
 
-.auth-input {
-    background-color: var(--main-text-color);
-    height: 2.5em;
-}
-
-.auth-button {
-    grid-column: 1/-1;
-    padding: 0.7em;
-    width: 60%;
-    margin: auto;
-    color: inherit;
-    background-color: #c1495370;
-    cursor: pointer;
-    text-transform: uppercase;
-    font: inherit;
-    &:hover {
-        opacity: 0.9;
-    }
-}

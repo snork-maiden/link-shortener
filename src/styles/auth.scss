@@ -1,0 +1,38 @@
+@import 'vars.scss';
+
+.app-log-in {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5em 1em;
+    align-items: center;
+}
+
+.auth-label {
+    width: min-content;
+}
+
+.auth-input {
+    background-color: var(--main-text-color);
+    font: inherit;
+    color: black;
+    height: 2em;
+}
+
+.auth-button {
+    grid-column: 1/-1;
+    padding: 0.7em;
+    width: 60%;
+    margin: auto;
+    color: inherit;
+    background-color: var(--accent-color);
+    cursor: pointer;
+    text-transform: uppercase;
+    font: inherit;
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &:disabled {
+        opacity: 0.7;
+    }
+}
