@@ -5,8 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BaseLayoutComponent } from './base-layout/base-layout.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
-import { LogInComponent } from './log-in/log-in.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import { LogInComponent } from './authorization/log-in/log-in.component';
+import { SignUpComponent } from './authorization/sign-up/sign-up.component';
+
 
 @NgModule({
   declarations: [

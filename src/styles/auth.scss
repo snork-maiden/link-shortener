@@ -1,14 +1,25 @@
 @import 'vars.scss';
 
 .app-log-in {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.5em 1em;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    justify-content: space-between;
 }
 
+.auth-wrapper {
+    display: grid;
+    justify-content: start;
+    gap: 0.5em;
+    @media screen and (min-width: 450px) {
+        grid-template-columns: auto 1fr;
+        gap: 1.5em 1em;
+    }
+}
 .auth-label {
-    width: min-content;
+    @media screen and (min-width: 450px) {
+        width: min-content;
+    }
 }
 
 .auth-input {
@@ -22,8 +33,9 @@
     grid-column: 1/-1;
     padding: 0.7em;
     width: 60%;
-    margin: auto;
     color: inherit;
+    margin: 0 auto;
+    margin-top: 2em;
     background-color: var(--accent-color);
     cursor: pointer;
     text-transform: uppercase;

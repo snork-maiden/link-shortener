@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./authorization.component.scss']
 })
 export class AuthorizationComponent implements OnInit {
-
-  constructor() { }
+  tabName: string = 'sign-in';
+  constructor() { 
+    
+  }
 
   ngOnInit(): void {
   }
