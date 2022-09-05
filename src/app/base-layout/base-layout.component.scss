@@ -1,0 +1,14 @@
+@import "../../styles.scss";
+
+.app-layout-root {
+  background-color: var(--main-bg);
+  font-family: var(--main-font);
+  color: var(--main-text-color);
+}
+
+.main-content {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
