@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  ngserve:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    working_dir: /opt/app
+    command: ng s
+    ports:
+      - 4200:4200
+    volumes:
+      - .:/opt/app:cached
+    restart: unless-stopped
+    networks:
+      - default
