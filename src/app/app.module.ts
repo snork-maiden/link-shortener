@@ -7,7 +7,9 @@ import { BaseLayoutComponent } from './base-layout/base-layout.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { LogInComponent } from './authorization/log-in/log-in.component';
 import { SignUpComponent } from './authorization/sign-up/sign-up.component';
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,11 @@ import { SignUpComponent } from './authorization/sign-up/sign-up.component';
     BaseLayoutComponent,
     AuthorizationComponent,
     LogInComponent,
-    SignUpComponent
+    SignUpComponent,
+    DashboardComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
