@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { LoginResponse } from './interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +28,7 @@ export class AuthorizationService {
       .set('password', password);
 
     this.http
-      .post<any[]>(this.baseUrl + 'login', body.toString(), {
+      .post<LoginResponse>(this.baseUrl + 'login', body.toString(), {
         headers: new HttpHeaders().set(
           'Content-Type',
           'application/x-www-form-urlencoded'
@@ -35,8 +36,16 @@ export class AuthorizationService {
       })
       .pipe(tap((data) => console.log(data)))
       .subscribe({
-        next: () => this.router.navigate(['/', 'dashboard']),
+        next: (value) => {
+          console.log(value);
+          localStorage.setItem('auth-token', value.access_token);
+          this.router.navigateByUrl('');
+        },
         error: (e) => console.error(e),
       });
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('auth-token');
   }
 }

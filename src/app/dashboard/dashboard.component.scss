@@ -1,0 +1,49 @@
+@import "../../styles.scss";
+
+.app-dashboard {
+  background-color: var(--block-bg);
+  width: 700px;
+  max-width: 98vw;
+  padding: 2em;
+  border-radius: 10px;
+}
+
+.new-link-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.new-link {
+  font-size: 1.2em;
+}
+
+.input {
+  font: inherit;
+  height: 30px;
+  color: var(--reverse-text-color);
+  background-color: var(--reverse-bg);
+}
+
+.link-submit {
+  font: inherit;
+  background-color: var(--accent-color);
+  border: none;
+  width: 29px;
+  height: 29px;
+}
+
+.links {
+  border-spacing: 0.3em;
+}
+
+.links__th {
+  background-color: var(--accent-color);
+  padding: 0.5em 1em;
+}
+
+.links__data {
+  background-color: var(--main-bg);
+  padding: 0.5em;
+  align-items: center;
+}
