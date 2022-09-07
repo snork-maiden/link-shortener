@@ -2,7 +2,7 @@
 
 .app-dashboard {
   background-color: var(--block-bg);
-  width: 700px;
+  min-width: 700px;
   max-width: 98vw;
   padding: 2em;
   border-radius: 10px;
@@ -31,6 +31,9 @@
   border: none;
   width: 29px;
   height: 29px;
+  &:disabled {
+    filter: grayscale(1);
+  }
 }
 
 .links {

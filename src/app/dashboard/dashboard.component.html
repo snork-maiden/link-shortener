@@ -1,9 +1,18 @@
 <div class="app-dashboard">
-  <form method="get">
+  <form method="post" action="#" #form="ngForm" (ngSubmit)="onSubmit(form)">
     <label for="" class="new-link"> Enter your link: </label>
     <div class="new-link-wrapper">
-      <input type="url" name="" id="" class="input" />
-      <button type="submit" class="link-submit">+</button>
+      <input
+        type="url"
+        class="input"
+        name="url"
+        pattern="[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
+        required
+        ngModel
+      />
+      <button type="submit" class="link-submit" [disabled]="!form.valid">
+        +
+      </button>
     </div>
   </form>
 
@@ -11,10 +20,10 @@
     <th class="links__th">Short link</th>
     <th class="links__th">Original link</th>
     <th class="links__th">Visits count</th>
-    <tr>
-      <td class="links__data"><a href="" class="links__link">1</a></td>
-      <td class="links__data"><a href="" class="links__link">2</a></td>
-      <td class="links__data"><a href="" class="links__link">3</a></td>
+    <tr *ngFor="let link of links">
+      <td class="links__data">{{ "http://79.143.31.216/s/" + link.short }}</td>
+      <td class="links__data">{{ link.target }}</td>
+      <td class="links__data">{{ link.counter }}</td>
     </tr>
   </table>
 </div>
