@@ -26,12 +26,18 @@ export class LinkSqueezeService {
       .subscribe();
   }
 
-  getStatistics(): Observable<StatisticResponse[]> {
+  getStatistics(
+    offset: number,
+    limit: number
+  ): Observable<StatisticResponse[]> {
     //order from enum, offset from page number
-    let offset = 0;
     return this.http
       .get<StatisticResponse[]>(
-        this.baseUrl + 'statistics' + `` + `?offset=${offset}` + `&limit=${10}`,
+        this.baseUrl +
+          'statistics' +
+          `` +
+          `?offset=${offset}` +
+          `&limit=${limit}`,
         {
           headers: new HttpHeaders().set(
             'Authorization',

@@ -17,7 +17,13 @@
   </form>
 
   <table class="links">
-    <th class="links__th">Short link</th>
+    <th
+      class="links__th"
+      [class.links__th--asc-sort]="false"
+      [class.links__th---desc-sort]="false"
+    >
+      Short link
+    </th>
     <th class="links__th">Original link</th>
     <th class="links__th">Visits count</th>
     <tr *ngFor="let link of links">
@@ -26,4 +32,21 @@
       <td class="links__data">{{ link.counter }}</td>
     </tr>
   </table>
+  <div class="pagination">
+    <button
+      class="pagination__btn"
+      type="button"
+      [disabled]="pageNumber === 0"
+      (click)="turnThePage(-1)"
+    >
+      << Previous</button
+    ><button
+      class="pagination__btn"
+      type="button"
+      [disabled]="links.length < limit"
+      (click)="turnThePage(1)"
+    >
+      Next >>
+    </button>
+  </div>
 </div>
