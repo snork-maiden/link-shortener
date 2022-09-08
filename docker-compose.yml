@@ -12,5 +12,4 @@ services:
     volumes:
       - .:/opt/app:cached
     restart: unless-stopped
-    networks:
-      - default
+    network_mode: host
