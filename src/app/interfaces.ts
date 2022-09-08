@@ -9,3 +9,7 @@ export interface StatisticResponse {
   target: string;
   counter: number;
 }
+
+export interface SortInfo {
+  [key: string]: 'asc' | 'desc' | null;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, NgModel } from '@angular/forms';
-import { StatisticResponse } from '../interfaces';
+import { NgForm } from '@angular/forms';
+import { SortInfo, StatisticResponse } from '../interfaces';
 import { LinkSqueezeService } from '../link-squeeze.service';
 
 @Component({
@@ -11,7 +11,15 @@ import { LinkSqueezeService } from '../link-squeeze.service';
 export class DashboardComponent implements OnInit {
   pageNumber = 0;
   limit = 10;
+  shortLink: string = '';
   links: StatisticResponse[] = [];
+  sortInfo: SortInfo = {
+    short: null,
+    target: null,
+    counter: null,
+  };
+  sortOrder = ['short', 'target', 'counter'];
+
   constructor(private linkSqueezeService: LinkSqueezeService) {}
 
   ngOnInit(): void {
@@ -19,19 +27,54 @@ export class DashboardComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form);
-    this.linkSqueezeService.squeeze(form.value.url);
+    this.linkSqueezeService.squeeze(form.value.url).subscribe({
+      next: (data) => {
+        this.shortLink = data.short;
+      },
+    });
+    form.reset();
+  }
+
+  copyLinkToClipboard(linkCode: string) {
+    navigator.clipboard.writeText('http://79.143.31.216/s/$' + linkCode);
   }
 
   showStatistics() {
     const offset = this.pageNumber * this.limit;
-    this.linkSqueezeService.getStatistics(offset, this.limit).subscribe({
-      next: (data) => (this.links = data),
-    });
+
+    let sortParameters: string[] = [];
+    for (let item of this.sortOrder) {
+      if (this.sortInfo[item]) {
+        sortParameters.push(this.sortInfo[item] + '_' + item);
+      }
+    }
+    this.linkSqueezeService
+      .getStatistics(offset, this.limit, sortParameters)
+      .subscribe({
+        next: (data) => (this.links = data),
+      });
   }
 
   turnThePage(step: number) {
     this.pageNumber += step;
     this.showStatistics();
+  }
+
+  sortClick(columnName: 'short' | 'target' | 'counter') {
+    this.sortOrder.sort((a) => (a === columnName ? 1 : 0));
+    switch (this.sortInfo[columnName]) {
+      case null:
+        this.sortInfo[columnName] = 'asc';
+        break;
+      case 'asc':
+        this.sortInfo[columnName] = 'desc';
+        break;
+      case 'desc':
+        this.sortInfo[columnName] = null;
+        break;
+    }
+
+    this.showStatistics();
+    return;
   }
 }

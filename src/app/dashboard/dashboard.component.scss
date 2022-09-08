@@ -2,38 +2,76 @@
 
 .app-dashboard {
   background-color: var(--block-bg);
-  min-width: 700px;
-  max-width: 98vw;
+  max-width: 97vw;
   padding: 2em;
   border-radius: 10px;
-}
-
-.new-link-wrapper {
-  display: flex;
-  align-items: center;
-  margin-bottom: 2em;
+  @media screen and (min-width: 800px) {
+    min-width: 700px;
+  }
 }
 
 .new-link {
+  margin-bottom: 2em;
+}
+
+.new-link__wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.new-link__label {
   font-size: 1.2em;
 }
 
-.input {
+.short-link {
+  position: relative;
+  cursor: pointer;
+  &::after {
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+    padding: 3px;
+    background-color: var(--reverse-bg);
+    color: var(--reverse-text-color);
+    content: "Click to copy";
+    width: max-content;
+    max-height: 0;
+    min-width: 0;
+    opacity: 0;
+    transition: 0.5s;
+  }
+  &:hover::after {
+    max-height: 100px;
+    max-width: 100px;
+    font-size: 0.7em;
+    opacity: 0.8;
+  }
+}
+
+.new-link__input {
   font: inherit;
   height: 30px;
+  width: min(500px, 90vw);
   color: var(--reverse-text-color);
   background-color: var(--reverse-bg);
 }
 
-.link-submit {
+.new-link__submit {
+  margin-top: 1px;
   font: inherit;
   background-color: var(--accent-color);
   border: none;
   width: 29px;
   height: 29px;
+  line-height: 29px;
   &:disabled {
     filter: grayscale(1);
   }
+}
+
+.table-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .links {
@@ -57,7 +95,18 @@
 .links__data {
   background-color: #0b061b;
   padding: 0.5em;
-  align-items: center;
+  &--target {
+    max-width: 500px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @media screen and (min-width: 1500px) {
+    max-width: 900px;
+  }
+  @media screen and (min-width: 1300px) {
+    max-width: 700px;
+  }
 }
 
 .pagination {

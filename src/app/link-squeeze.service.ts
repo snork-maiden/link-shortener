@@ -14,37 +14,42 @@ export class LinkSqueezeService {
     private http: HttpClient,
     private authorizationService: AuthorizationService
   ) {}
-  squeeze(link: string) {
-    this.http
-      .post<any[]>(this.baseUrl + 'squeeze' + `?link=${link}`, '', {
+
+  squeeze(link: string): Observable<StatisticResponse> {
+    return this.http.post<StatisticResponse>(
+      this.baseUrl + 'squeeze' + `?link=${link}`,
+      '',
+      {
         headers: new HttpHeaders().set(
           'Authorization',
           `Bearer ${this.authorizationService.getToken()}`
         ),
-      })
-      .pipe(tap((data) => console.log(data)))
-      .subscribe();
+      }
+    );
   }
 
   getStatistics(
     offset: number,
-    limit: number
+    limit: number,
+    sortParameters: string[]
   ): Observable<StatisticResponse[]> {
-    //order from enum, offset from page number
-    return this.http
-      .get<StatisticResponse[]>(
-        this.baseUrl +
-          'statistics' +
-          `` +
-          `?offset=${offset}` +
-          `&limit=${limit}`,
-        {
-          headers: new HttpHeaders().set(
-            'Authorization',
-            `Bearer ${this.authorizationService.getToken()}`
-          ),
-        }
-      )
-      .pipe(tap((data) => console.log(data)));
+    let sortString: string = '';
+    sortParameters.forEach((item) => (sortString += `order=${item}&`));
+    sortString = sortString.slice(0, -1);
+    console.log(sortString);
+    return this.http.get<StatisticResponse[]>(
+      this.baseUrl +
+        'statistics' +
+        '?' +
+        sortString +
+        `&offset=${offset}` +
+        `&limit=${limit}`,
+      {
+        headers: new HttpHeaders().set(
+          'Authorization',
+          `Bearer ${this.authorizationService.getToken()}`
+        ),
+      }
+    );
   }
 }

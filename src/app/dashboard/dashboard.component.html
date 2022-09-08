@@ -1,37 +1,66 @@
 <div class="app-dashboard">
-  <form method="post" action="#" #form="ngForm" (ngSubmit)="onSubmit(form)">
-    <label for="" class="new-link"> Enter your link: </label>
-    <div class="new-link-wrapper">
+  <form #form="ngForm" class="new-link" (ngSubmit)="onSubmit(form)">
+    <label for="link-input" class="new-link__label"> Enter your link: </label>
+    <div class="new-link__wrapper">
       <input
         type="url"
-        class="input"
+        class="new-link__input"
         name="url"
+        id="link-input"
         pattern="[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
         required
         ngModel
       />
-      <button type="submit" class="link-submit" [disabled]="!form.valid">
+      <button type="submit" class="new-link__submit" [disabled]="!form.valid">
         +
       </button>
     </div>
-  </form>
-
-  <table class="links">
-    <th
-      class="links__th"
-      [class.links__th--asc-sort]="false"
-      [class.links__th---desc-sort]="false"
+    <div
+      *ngIf="shortLink"
+      class="new-link__short short-link"
+      (click)="copyLinkToClipboard(shortLink)"
     >
-      Short link
-    </th>
-    <th class="links__th">Original link</th>
-    <th class="links__th">Visits count</th>
-    <tr *ngFor="let link of links">
-      <td class="links__data">{{ "http://79.143.31.216/s/" + link.short }}</td>
-      <td class="links__data">{{ link.target }}</td>
-      <td class="links__data">{{ link.counter }}</td>
-    </tr>
-  </table>
+      {{ "http://79.143.31.216/s/$" + shortLink }}
+    </div>
+  </form>
+  <div class="table-wrapper">
+    <table class="links" *ngIf="links.length">
+      <th
+        class="links__th"
+        [class.links__th--asc-sort]="sortInfo['short'] === 'asc'"
+        [class.links__th--desc-sort]="sortInfo['short'] === 'desc'"
+        (click)="sortClick('short')"
+      >
+        Short link
+      </th>
+      <th
+        class="links__th"
+        [class.links__th--asc-sort]="sortInfo['target'] === 'asc'"
+        [class.links__th--desc-sort]="sortInfo['target'] === 'desc'"
+        (click)="sortClick('target')"
+      >
+        Original link
+      </th>
+      <th
+        class="links__th"
+        [class.links__th--asc-sort]="sortInfo['counter'] === 'asc'"
+        [class.links__th--desc-sort]="sortInfo['counter'] === 'desc'"
+        (click)="sortClick('counter')"
+      >
+        Visits count
+      </th>
+      <tr *ngFor="let link of links">
+        <td
+          class="links__data short-link"
+          (click)="copyLinkToClipboard(link['short'])"
+        >
+          {{ "http://79.143.31.216/s/" + link["short"] }}
+        </td>
+        <td class="links__data links__data--target">{{ link.target }}</td>
+        <td class="links__data">{{ link.counter }}</td>
+      </tr>
+    </table>
+  </div>
   <div class="pagination">
     <button
       class="pagination__btn"
