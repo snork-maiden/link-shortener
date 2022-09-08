@@ -36,7 +36,6 @@ export class LinkSqueezeService {
     let sortString: string = '';
     sortParameters.forEach((item) => (sortString += `order=${item}&`));
     sortString = sortString.slice(0, -1);
-    console.log(sortString);
     return this.http.get<StatisticResponse[]>(
       this.baseUrl +
         'statistics' +

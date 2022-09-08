@@ -5,7 +5,6 @@ import { AuthorizationService } from 'src/app/authorization.service';
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.scss'],
 })
 export class LogInComponent implements OnInit {
   loginError: null | string = null;

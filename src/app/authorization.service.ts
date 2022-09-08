@@ -19,7 +19,6 @@ export class AuthorizationService {
           `?username=${username}&password=${password}`,
         ''
       )
-      .pipe(tap((data) => console.log(data)));
   }
 
   logIn(username: string, password: string) {
@@ -34,10 +33,8 @@ export class AuthorizationService {
           'application/x-www-form-urlencoded'
         ),
       })
-      .pipe(tap((data) => console.log(data)))
       .subscribe({
         next: (value) => {
-          console.log(value);
           localStorage.setItem('auth-token', value.access_token);
           this.router.navigateByUrl('');
         },
