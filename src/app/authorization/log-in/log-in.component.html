@@ -6,9 +6,27 @@
 >
   <div class="auth-wrapper">
     <label for="username" class="auth-label"> Username: </label>
-    <input type="text" name="" id="username" class="auth-input" required />
+    <input
+      type="text"
+      name="username"
+      id="username"
+      class="auth-input"
+      required
+      ngModel
+    />
     <label class="auth-label" for="password"> Password: </label>
-    <input type="password" name="" id="password" class="auth-input" required />
+    <input
+      type="password"
+      name="password"
+      id="password"
+      class="auth-input"
+      required
+      ngModel
+    />
   </div>
-  <button type="submit" class="auth-button">Sign in</button>
+  <div class="error" *ngIf="loginError">{{ loginError }}</div>
+
+  <button type="submit" class="auth-button" [disabled]="!form.valid">
+    Sign in
+  </button>
 </form>

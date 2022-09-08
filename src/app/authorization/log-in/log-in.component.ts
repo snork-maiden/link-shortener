@@ -8,6 +8,7 @@ import { AuthorizationService } from 'src/app/authorization.service';
   styleUrls: ['./log-in.component.scss'],
 })
 export class LogInComponent implements OnInit {
+  loginError: null | string = null;
   constructor(private authorization: AuthorizationService) {}
 
   ngOnInit(): void {}
@@ -15,5 +16,6 @@ export class LogInComponent implements OnInit {
   onSubmit(form: NgForm) {
     const values = form.value;
     this.authorization.logIn(values.username, values.password);
+    setTimeout(() => (this.loginError = 'Wrong login or password'), 1000);
   }
 }

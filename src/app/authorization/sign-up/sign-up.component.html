@@ -30,5 +30,7 @@
   </div>
   <div class="error" *ngIf="isPasswordError">Passwords are not the same</div>
   <div class="error" *ngIf="registrationError">{{ registrationError }}</div>
-  <button type="submit" class="auth-button">Sign up</button>
+  <button type="submit" class="auth-button" [disabled]="!form.valid">
+    Sign up
+  </button>
 </form>
