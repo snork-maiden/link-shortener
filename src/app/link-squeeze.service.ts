@@ -2,13 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { AuthorizationService } from './authorization.service';
+import { environment } from './environment';
 import { StatisticResponse } from './interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LinkSqueezeService {
-  baseUrl = 'http://54.38.159.111:9980/';
 
   constructor(
     private http: HttpClient,
@@ -20,7 +20,7 @@ export class LinkSqueezeService {
       link
     };
     return this.http.post<StatisticResponse>(
-      this.baseUrl + 'squeeze',
+      environment.APIDomain + 'squeeze',
       JSON.stringify(body),
       {
         headers: new HttpHeaders().set(
@@ -40,7 +40,7 @@ export class LinkSqueezeService {
     sortParameters.forEach((item) => (sortString += `order=${item}&`));
     sortString = sortString.slice(0, -1);
     return this.http.get<StatisticResponse[]>(
-      this.baseUrl +
+      environment.APIDomain +
         'statistics' +
         '?' +
         sortString +

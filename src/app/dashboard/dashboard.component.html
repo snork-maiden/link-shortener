@@ -20,7 +20,7 @@
       class="new-link__short short-link"
       (click)="copyLinkToClipboard(shortLink)"
     >
-      {{ "54.38.159.111:9980/s/" + shortLink }}
+      {{ shortURL + shortLink }}
     </div>
   </form>
   <div class="table-wrapper">
@@ -54,7 +54,7 @@
           class="links__data short-link"
           (click)="copyLinkToClipboard(link['short'])"
         >
-          {{ "54.38.159.111:9980/s/" + link["short"] }}
+          {{ shortURL + link["short"] }}
         </td>
         <td class="links__data links__data--target">{{ link.target }}</td>
         <td class="links__data links__data--counter">{{ link.counter }}</td>

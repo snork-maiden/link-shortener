@@ -3,12 +3,12 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoginResponse } from './interfaces';
+import { environment } from './environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthorizationService {
-  baseUrl = 'http://54.38.159.111:9980/';
   constructor(private http: HttpClient, private router: Router) {}
 
   register(username: string, password: string): Observable<any[]> {
@@ -17,7 +17,7 @@ export class AuthorizationService {
       password,
     };
     return this.http.post<any[]>(
-      this.baseUrl + 'register',
+      environment.APIDomain + 'register',
       JSON.stringify(body),
       {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
@@ -31,7 +31,7 @@ export class AuthorizationService {
       .set('password', password);
 
     this.http
-      .post<LoginResponse>(this.baseUrl + 'login', body.toString(), {
+      .post<LoginResponse>(environment.APIDomain + 'login', body.toString(), {
         headers: new HttpHeaders().set(
           'Content-Type',
           'application/x-www-form-urlencoded'

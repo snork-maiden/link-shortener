@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { environment } from '../environment';
 import { SortInfo, StatisticResponse } from '../interfaces';
 import { LinkSqueezeService } from '../link-squeeze.service';
 
@@ -19,6 +20,7 @@ export class DashboardComponent implements OnInit {
     counter: null,
   };
   sortOrder = ['short', 'target', 'counter'];
+  shortURL = environment.APIDomainShort
 
   constructor(private linkSqueezeService: LinkSqueezeService) {}
 
@@ -33,10 +35,11 @@ export class DashboardComponent implements OnInit {
       },
     });
     form.reset();
+    this.showStatistics();
   }
 
   copyLinkToClipboard(linkCode: string) {
-    navigator.clipboard.writeText('http://54.38.159.111:9980/s/' + linkCode);
+    navigator.clipboard.writeText(environment.APIDomain + '/s/' + linkCode);
   }
 
   showStatistics() {
