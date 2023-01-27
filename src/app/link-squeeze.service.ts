@@ -8,7 +8,7 @@ import { StatisticResponse } from './interfaces';
   providedIn: 'root',
 })
 export class LinkSqueezeService {
-  baseUrl = 'http://79.143.31.216/';
+  baseUrl = 'http://54.38.159.111:9980/';
 
   constructor(
     private http: HttpClient,
@@ -16,14 +16,17 @@ export class LinkSqueezeService {
   ) {}
 
   squeeze(link: string): Observable<StatisticResponse> {
+    const body = {
+      link
+    };
     return this.http.post<StatisticResponse>(
-      this.baseUrl + 'squeeze' + `?link=${link}`,
-      '',
+      this.baseUrl + 'squeeze',
+      JSON.stringify(body),
       {
         headers: new HttpHeaders().set(
           'Authorization',
           `Bearer ${this.authorizationService.getToken()}`
-        ),
+        ).set('Content-Type', 'application/json'),
       }
     );
   }

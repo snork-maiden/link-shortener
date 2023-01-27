@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoginResponse } from './interfaces';
 
@@ -8,17 +8,21 @@ import { LoginResponse } from './interfaces';
   providedIn: 'root',
 })
 export class AuthorizationService {
-  baseUrl = 'http://79.143.31.216/';
+  baseUrl = 'http://54.38.159.111:9980/';
   constructor(private http: HttpClient, private router: Router) {}
 
   register(username: string, password: string): Observable<any[]> {
-    return this.http
-      .post<any[]>(
-        this.baseUrl +
-          'register' +
-          `?username=${username}&password=${password}`,
-        ''
-      )
+    const body = {
+      username,
+      password,
+    };
+    return this.http.post<any[]>(
+      this.baseUrl + 'register',
+      JSON.stringify(body),
+      {
+        headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      }
+    );
   }
 
   logIn(username: string, password: string) {
@@ -35,7 +39,7 @@ export class AuthorizationService {
       })
       .subscribe({
         next: (value) => {
-          localStorage.setItem('auth-token', value.access_token);
+          localStorage.setItem('auth-token', value.accessToken);
           this.router.navigateByUrl('');
         },
         error: (e) => console.error(e),

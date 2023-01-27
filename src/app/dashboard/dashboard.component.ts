@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit {
   }
 
   copyLinkToClipboard(linkCode: string) {
-    navigator.clipboard.writeText('http://79.143.31.216/s/$' + linkCode);
+    navigator.clipboard.writeText('http://54.38.159.111:9980/s/' + linkCode);
   }
 
   showStatistics() {

@@ -1,10 +1,8 @@
 export interface LoginResponse {
-  access_token: string;
-  token_type: 'bearer';
+  accessToken: string;
 }
 
 export interface StatisticResponse {
-  id: number;
   short: string;
   target: string;
   counter: number;
