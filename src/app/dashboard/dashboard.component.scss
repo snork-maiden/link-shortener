@@ -3,11 +3,9 @@
 .app-dashboard {
   background-color: var(--block-bg);
   max-width: 97vw;
+  min-width: min(700px, 97vw);
   padding: 2em;
   border-radius: 10px;
-  @media screen and (min-width: 800px) {
-    min-width: 700px;
-  }
 }
 
 .new-link {
@@ -97,20 +95,13 @@
   background-color: #0b061b;
   padding: 0.5em;
   &--target {
-    max-width: 500px;
-    white-space: nowrap;
+    max-width: min(40vw, 700px);    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: default;
   }
   &--counter {
     cursor: default;
-  }
-  @media screen and (min-width: 1500px) {
-    max-width: 900px;
-  }
-  @media screen and (min-width: 1300px) {
-    max-width: 700px;
   }
 
 }

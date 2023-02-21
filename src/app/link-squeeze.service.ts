@@ -37,7 +37,7 @@ export class LinkSqueezeService {
     sortParameters: string[]
   ): Observable<StatisticResponse[]> {
     let sortString: string = '';
-    sortParameters.forEach((item) => (sortString += `order=${item}&`));
+    sortParameters.forEach((item) => (sortString += `sort=${item}&`));
     sortString = sortString.slice(0, -1);
     return this.http.get<StatisticResponse[]>(
       environment.APIDomain +

@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
     let sortParameters: string[] = [];
     for (let item of this.sortOrder) {
       if (this.sortInfo[item]) {
-        sortParameters.push(this.sortInfo[item] + '_' + item);
+        sortParameters.push(item +  '_' + this.sortInfo[item]);
       }
     }
     this.linkSqueezeService
