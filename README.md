@@ -1,23 +1,51 @@
 # Link Shortener
-App that allows you to get a short version of your link.
-### Features:
-* Authorization
-* Visits count
-* Sorting
-* Pagination
 
-**View on GitHub Pages**: https://snork-maiden.github.io/link-shortener/
+This app is designed to help you transform long URLs into manageable link versions that are easier to share.
 
-**Stack**: Angular 14, Node.js 18
-**[Backend](https://github.com/Offout/go-link-shortener)** 
+View the project on [GitHub Pages](https://snork-maiden.github.io/link-shortener/).
+
+[Backend](https://github.com/Offout/go-link-shortener) by [@Offout](https://github.com/Offout)
+
+## Features
+
+- **Authorization**
+- **Visits Count**
+- **Sorting**
+- **Pagination**
+
+## Tech Stack
+
+- **Angular 14**
+- **Typescript**
+- **SCSS**
+- Node.js 18
+- Docker
 
 ## Setup
-### Development server on host
 
-**Requirements**: Node.js 18, npm
+#### Development Server on Host
 
-Run `npm install` once and `ng serve` to start a dev server. Navigate to http://localhost:4200/.
 
-### Development server in Docker
+1. Install the dependencies:
 
-Run `docker compose up -d` to start a dev server. Navigate to http://localhost:4200/.
+    ```
+    npm install
+    ```
+
+2. Start the server:
+
+    ```
+    ng serve
+    ```
+
+3. Visit http://localhost:4200/
+
+#### Development Server in Docker
+
+Ensure Docker is installed on your local machine, then run the following command to start a dev server:
+
+```
+docker compose up -d
+```
+
+Once the server is up, open your web browser and visit http://localhost:4200/
