@@ -1,28 +1,5 @@
 <div class="app-dashboard">
-  <form #form="ngForm" class="new-link" (ngSubmit)="onSubmit(form)">
-    <label for="link-input" class="new-link__label"> Enter your link: </label>
-    <div class="new-link__wrapper">
-      <input
-        type="url"
-        class="new-link__input"
-        name="url"
-        id="link-input"
-        pattern="[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
-        required
-        ngModel
-      />
-      <button type="submit" class="new-link__submit" [disabled]="!form.valid">
-        +
-      </button>
-    </div>
-    <div
-      *ngIf="shortLink"
-      class="new-link__short short-link"
-      (click)="copyLinkToClipboard(shortLink)"
-    >
-      {{ shortURL + shortLink }}
-    </div>
-  </form>
+  <app-add-link (formSubmit)="onSubmit()"></app-add-link>
   <div class="table-wrapper">
     <table class="links" *ngIf="links.length">
       <th

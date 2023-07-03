@@ -10,9 +10,10 @@ import { LinkSqueezeService } from '../link-squeeze.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  shortURL = environment.APIDomainShort
+  shortLink: string = '';
   pageNumber = 0;
   limit = 10;
-  shortLink: string = '';
   links: StatisticResponse[] = [];
   sortInfo: SortInfo = {
     short: null,
@@ -20,7 +21,6 @@ export class DashboardComponent implements OnInit {
     counter: null,
   };
   sortOrder = ['short', 'target', 'counter'];
-  shortURL = environment.APIDomainShort
 
   constructor(private linkSqueezeService: LinkSqueezeService) {}
 
@@ -28,13 +28,14 @@ export class DashboardComponent implements OnInit {
     this.showStatistics();
   }
 
-  onSubmit(form: NgForm) {
-    this.linkSqueezeService.squeeze(form.value.url).subscribe({
-      next: (data) => {
-        this.shortLink = data.short;
-      },
-    });
-    form.reset();
+  onSubmit() {
+    console.log('a')
+    // this.linkSqueezeService.squeeze(form.value.url).subscribe({
+    //   next: (data) => {
+    //     this.shortLink = data.short;
+    //   },
+    // });
+    // form.reset();
     this.showStatistics();
   }
 

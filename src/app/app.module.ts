@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthButtonComponent } from './authorization/auth-button/auth-button.component';
 import { AuthErrorComponent } from './authorization/auth-error/auth-error.component';
 import { FormFieldComponent } from './authorization/form-field/form-field.component';
+import { AddLinkComponent } from './dashboard/add-link/add-link.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormFieldComponent } from './authorization/form-field/form-field.compon
     AuthButtonComponent,
     AuthErrorComponent,
     FormFieldComponent,
+    AddLinkComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

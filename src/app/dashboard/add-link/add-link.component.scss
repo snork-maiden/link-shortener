@@ -1,0 +1,59 @@
+.new-link__wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .new-link__label {
+    font-size: 1.2em;
+  }
+
+  .new-link {
+    margin-bottom: 2em;
+  }
+    
+  
+  .short-link {
+    position: relative;
+    cursor: pointer;
+    &::after {
+      position: absolute;
+      bottom: 30px;
+      right: 10px;
+      padding: 3px;
+      background-color: var(--reverse-bg);
+      color: var(--reverse-text-color);
+      content: "Click to copy";
+      width: max-content;
+      max-height: 0;
+      min-width: 0;
+      opacity: 0;
+      transition: 0.5s;
+    }
+    &:hover::after {
+      max-height: 100px;
+      max-width: 100px;
+      font-size: 0.7em;
+      opacity: 0.8;
+    }
+  }
+  
+  .new-link__input {
+    font: inherit;
+    height: 30px;
+    width: min(500px, 90vw);
+    color: var(--reverse-text-color);
+    background-color: var(--reverse-bg);
+  }
+  
+  .new-link__submit {
+    margin-top: 1px;
+    font: inherit;
+    background-color: var(--accent-color);
+    border: none;
+    width: 29px;
+    height: 29px;
+    line-height: 29px;
+    &:disabled {
+      filter: grayscale(1);
+    }
+  }
