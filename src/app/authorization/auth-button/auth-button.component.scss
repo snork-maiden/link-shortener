@@ -1,0 +1,20 @@
+.auth-button {
+    grid-column: 1/-1;
+    padding: 0.7em;
+    width: 60%;
+    color: inherit;
+    margin: 0 auto;
+    margin-top: 2em;
+    background-color: var(--accent-color);
+    cursor: pointer;
+    text-transform: uppercase;
+    font: inherit;
+    &:hover {
+      opacity: 0.9;
+    }
+  
+    &:disabled {
+      cursor: initial;
+      opacity: 0.7;
+    }
+  }

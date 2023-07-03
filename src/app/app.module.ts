@@ -10,6 +10,9 @@ import { SignUpComponent } from './authorization/sign-up/sign-up.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthButtonComponent } from './authorization/auth-button/auth-button.component';
+import { AuthErrorComponent } from './authorization/auth-error/auth-error.component';
+import { FormFieldComponent } from './authorization/form-field/form-field.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LogInComponent,
     SignUpComponent,
     DashboardComponent,
+    AuthButtonComponent,
+    AuthErrorComponent,
+    FormFieldComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

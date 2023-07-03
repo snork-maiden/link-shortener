@@ -1,0 +1,14 @@
+.auth-label {
+display: grid;
+gap: 1em;
+align-items: end;
+  @media screen and (min-width: 450px) {
+    grid-template-columns: 25% 1fr;
+  }
+}
+.auth-input {
+  background-color: var(--main-text-color);
+  font: inherit;
+  color: black;
+  height: 2em;
+}

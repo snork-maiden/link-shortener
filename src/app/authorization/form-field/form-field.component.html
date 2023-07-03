@@ -1,0 +1,11 @@
+<label [for]="id" class="auth-label">
+  {{ label }}
+  <input
+    [type]="isPassword ? 'password' : 'text'"
+    [id]="id"
+    class="auth-input"
+    [(ngModel)]="inputValue"
+    (ngModelChange)="emitValue(inputValue)"
+    required
+  />
+</label>

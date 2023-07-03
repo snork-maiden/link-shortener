@@ -5,28 +5,19 @@
   class="app-log-in auth-form"
 >
   <div class="auth-wrapper">
-    <label for="username" class="auth-label"> Username: </label>
-    <input
-      type="text"
-      name="username"
+    <app-form-field
+      label="Username:"
       id="username"
-      class="auth-input"
-      required
-      ngModel
-    />
-    <label class="auth-label" for="password"> Password: </label>
-    <input
-      type="password"
-      name="password"
+      (value)="saveFormField($event, 'username')"
+    ></app-form-field>
+    <app-form-field
+      label="Password:"
       id="password"
-      class="auth-input"
-      required
-      ngModel
-    />
+      [isPassword]="true"
+      (value)="saveFormField($event, 'password')"
+    ></app-form-field>
   </div>
-  <div class="error" *ngIf="loginError">{{ loginError }}</div>
+  <app-auth-error *ngIf="loginError">{{ loginError }}</app-auth-error>
 
-  <button type="submit" class="auth-button" [disabled]="!form.valid">
-    Sign in
-  </button>
+  <app-auth-button [disabled]="!isFormValid"> Sign in </app-auth-button>
 </form>
