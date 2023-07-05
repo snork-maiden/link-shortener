@@ -14,6 +14,7 @@ import { AuthButtonComponent } from './authorization/auth-button/auth-button.com
 import { AuthErrorComponent } from './authorization/auth-error/auth-error.component';
 import { FormFieldComponent } from './authorization/form-field/form-field.component';
 import { AddLinkComponent } from './dashboard/add-link/add-link.component';
+import { LinkListComponent } from './dashboard/link-list/link-list.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AddLinkComponent } from './dashboard/add-link/add-link.component';
     AuthErrorComponent,
     FormFieldComponent,
     AddLinkComponent,
+    LinkListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

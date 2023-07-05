@@ -1,0 +1,64 @@
+
+.table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+    margin-bottom: 10px;
+  }
+  
+  .links {
+    border-spacing: 0.3em;
+    margin-bottom: 0.5em;
+  }
+  
+  .links__th {
+    cursor: pointer;
+    background-color: var(--accent-color);
+    padding: 0.5em 1em;
+  
+    &--asc-sort::after {
+      content: " ▲";
+    }
+    &--desc-sort::after {
+      content: " ▼";
+    }
+  }
+  
+  .links__data {
+    background-color: #0b061b;
+    padding: 0.5em;
+    &--target {
+      max-width: min(40vw, 700px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: default;
+    }
+    &--counter {
+      cursor: default;
+    }
+  }
+  
+  .pagination {
+    width: max-content;
+    display: flex;
+    gap: 1em;
+    margin-left: auto;
+  }
+  
+  .pagination__btn {
+    display: flex;
+    align-items: center;
+    font: inherit;
+    background-color: var(--accent-color);
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  
+    &:disabled {
+      filter: grayscale(1);
+      opacity: 0.7;
+      cursor: default;
+    }
+  }
+  
